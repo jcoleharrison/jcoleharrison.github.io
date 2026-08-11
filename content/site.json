@@ -1,0 +1,83 @@
+{
+  "name": "Cole Harrison",
+  "url": "https://jcoleharrison.github.io",
+  "description": "Cole Harrison is a machine learning research engineer working on reinforcement learning, computer vision, and multimodal foundation models, applied to robot learning and sim-to-real learning.",
+  "portrait": {
+    "src": "media/cole.webp",
+    "alt": "Cole Harrison",
+    "width": 420,
+    "height": 500
+  },
+  "bio": [
+    "I am a Machine Learning Research Engineer at Amazon Web Services and Embodied AI lead at Cohere Labs, as well as a research collaborator with the Stanford Geometric Computation Group and PRIOR at Ai2.",
+    "My research interests are in reinforcement learning, computer vision, and multimodal foundation models, and range from algorithmic foundations to large-scale training and deployment."
+  ],
+  "affiliations": [
+    {
+      "label": "Amazon Web Services",
+      "url": "https://aws.amazon.com/"
+    },
+    {
+      "label": "Stanford Geometric Computation Group",
+      "url": "https://geometry.stanford.edu/"
+    },
+    {
+      "label": "PRIOR at Ai2",
+      "url": "https://prior.allenai.org/"
+    },
+    {
+      "label": "Cohere Labs",
+      "url": "https://cohere.com/research/open-science"
+    }
+  ],
+  "links": [
+    {
+      "label": "Google Scholar",
+      "url": "https://scholar.google.com/citations?user=9W_lY40AAAAJ&hl=en&oi=ao"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/jcoleharrison"
+    },
+    {
+      "label": "X",
+      "url": "https://x.com/cole__ai"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/cole-harrison-ai"
+    }
+  ],
+  "interests": [
+    "Reinforcement learning",
+    "Computer vision",
+    "Multimodal foundation models",
+    "Robot learning",
+    "Sim-to-real transfer"
+  ],
+  "orgs": {
+    "stanford": {
+      "label": "Stanford",
+      "url": "https://geometry.stanford.edu/",
+      "logo": "media/logos/stanford.svg",
+      "color": "#8c1515",
+      "colorDark": "#cf4b4b"
+    },
+    "ai2": {
+      "label": "Ai2 PRIOR",
+      "url": "https://prior.allenai.org/",
+      "logo": "media/logos/ai2.png",
+      "color": "#ff59aa",
+      "colorDark": "#ff59aa"
+    },
+    "uw": {
+      "label": "UW",
+      "url": "https://www.cs.washington.edu/",
+      "logo": "media/logos/uw.png",
+      "color": "#4b2e84",
+      "colorDark": "#9b7ad6"
+    }
+  },
+  "email": "j.cole.harrison [at] me [dot] com",
+  "twitter": "@cole__ai"
+}

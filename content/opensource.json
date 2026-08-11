@@ -1,0 +1,68 @@
+[
+  {
+    "name": "TOPReward",
+    "note": "Reference implementation and evaluation tooling for extracting dense task-progress signals from pretrained video-language models.",
+    "links": [
+      {
+        "label": "Code",
+        "url": "https://github.com/TOPReward/TOPReward"
+      },
+      {
+        "label": "Project",
+        "url": "https://topreward.github.io/webpage/"
+      }
+    ]
+  },
+  {
+    "name": "MolmoAct 2",
+    "note": "Pretraining data-quality filtering using TOPReward thresholding, and value-head work, for an open action-reasoning model family released with models, data, and evaluation rollouts.",
+    "links": [
+      {
+        "label": "Code",
+        "url": "https://github.com/allenai/molmoact2"
+      },
+      {
+        "label": "Models",
+        "url": "https://huggingface.co/collections/allenai/molmoact2-models"
+      },
+      {
+        "label": "Data",
+        "url": "https://huggingface.co/collections/allenai/molmoact2-datasets"
+      }
+    ]
+  },
+  {
+    "name": "UniPose9D",
+    "note": "Implementation and pretrained models for category-agnostic 9D object pose estimation from RGB and RGB-D input, with no mesh, category label, or reference view required.",
+    "links": [
+      {
+        "label": "Code",
+        "url": "https://github.com/qq456cvb/UniPose9D"
+      },
+      {
+        "label": "Project",
+        "url": "https://qq456cvb.github.io/projects/unipose9d"
+      }
+    ]
+  },
+  {
+    "name": "LeRobot",
+    "note": "TOPReward and MolmoAct 2 integrations into Hugging Face's robotics library, plus fixes for Koch 1.1 hardware and setup failure modes.",
+    "links": [
+      {
+        "label": "Repository",
+        "url": "https://github.com/huggingface/lerobot"
+      }
+    ]
+  },
+  {
+    "name": "MeGPT",
+    "note": "A QLoRA fine-tuning pipeline for training a personalized Llama-based chatbot from private message history.",
+    "links": [
+      {
+        "label": "Repository",
+        "url": "https://github.com/jcoleharrison/meGPT"
+      }
+    ]
+  }
+]

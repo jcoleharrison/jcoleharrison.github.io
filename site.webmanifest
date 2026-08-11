@@ -1,0 +1,26 @@
+{
+  "name": "Cole Harrison",
+  "short_name": "Cole Harrison",
+  "description": "Cole Harrison is a machine learning research engineer working on reinforcement learning, computer vision, and multimodal foundation models, applied to robot learning and sim-to-real learning.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f5f4ef",
+  "theme_color": "#f5f4ef",
+  "icons": [
+    {
+      "src": "media/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "media/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "media/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

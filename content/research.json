@@ -1,0 +1,130 @@
+[
+  {
+    "id": "unipose9d",
+    "title": "UniPose9D: Universal Category-Agnostic Object Pose Estimation",
+    "authors": "Yang You, Yi Du, Cole Harrison, Leonidas Guibas",
+    "date": "2026-07-10",
+    "links": [
+      {
+        "label": "Project",
+        "url": "https://qq456cvb.github.io/projects/unipose9d"
+      },
+      {
+        "label": "Paper",
+        "url": "https://arxiv.org/abs/2607.09985"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/qq456cvb/UniPose9D"
+      }
+    ],
+    "highlight": true,
+    "media": {
+      "type": "image",
+      "src": "media/unipose9d.webp",
+      "alt": "9D pose axes overlaid on unseen objects",
+      "width": 640,
+      "height": 360
+    },
+    "figure": true,
+    "orgs": [
+      "stanford"
+    ]
+  },
+  {
+    "id": "anymug",
+    "title": "Pose-Agnostic Robotic Functional Grasping via Observation-Action Canonicalization",
+    "authors": "Le Qiu, Cole Harrison, Jiankai Sun, Yao Liu, Suning Huang, Qianzhong Chen, Yang You, Marco Pavone",
+    "date": "2026-06-19",
+    "links": [
+      {
+        "label": "Paper",
+        "url": "https://arxiv.org/abs/2606.21148"
+      }
+    ],
+    "highlight": false,
+    "media": {
+      "type": "video",
+      "src": "media/anymug.mp4",
+      "poster": "media/anymug.jpg",
+      "alt": "Zero-shot functional grasping on a Franka Panda",
+      "width": 640,
+      "height": 360
+    },
+    "figure": true,
+    "orgs": [
+      "stanford"
+    ]
+  },
+  {
+    "id": "molmoact2",
+    "title": "MolmoAct 2: Action Reasoning Models for Real-world Deployment",
+    "authors": "Haoquan Fang, Jiafei Duan, … Cole Harrison, … Ali Farhadi, Dieter Fox, Ranjay Krishna (29 authors)",
+    "date": "2026-05-05",
+    "links": [
+      {
+        "label": "Project",
+        "url": "https://allenai.org/blog/molmoact2"
+      },
+      {
+        "label": "Paper",
+        "url": "https://arxiv.org/abs/2605.02881"
+      },
+      {
+        "label": "Models",
+        "url": "https://huggingface.co/collections/allenai/molmoact2-models"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/allenai/molmoact2"
+      }
+    ],
+    "highlight": false,
+    "media": {
+      "type": "video",
+      "src": "media/molmoact2.mp4",
+      "poster": "media/molmoact2.jpg",
+      "alt": "MolmoAct 2 policy rollouts",
+      "width": 640,
+      "height": 360
+    },
+    "figure": true,
+    "orgs": [
+      "ai2"
+    ]
+  },
+  {
+    "id": "topreward",
+    "title": "TOPReward: Token Probabilities as Hidden Zero-Shot Rewards for Robotics",
+    "authors": "Shirui Chen, Cole Harrison, Ying-Chun Lee, Angela Jin Yang, Zhongzheng Ren, Lillian J. Ratliff, Jiafei Duan, Dieter Fox, Ranjay Krishna",
+    "date": "2026-02-22",
+    "links": [
+      {
+        "label": "Project",
+        "url": "https://topreward.github.io/webpage/"
+      },
+      {
+        "label": "Paper",
+        "url": "https://arxiv.org/abs/2602.19313"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/TOPReward/TOPReward"
+      }
+    ],
+    "highlight": true,
+    "media": {
+      "type": "video",
+      "src": "media/topreward.mp4",
+      "poster": "media/topreward.jpg",
+      "alt": "TOPReward progress estimates over robot rollouts",
+      "width": 640,
+      "height": 360
+    },
+    "figure": true,
+    "orgs": [
+      "ai2",
+      "uw"
+    ]
+  }
+]

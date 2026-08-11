@@ -1,0 +1,543 @@
+/* Cole Harrison.
+   Look and feel after Physical Intelligence: bone paper, black ink, system mono
+   for everything, serif reserved for the wordmark and page headings. No accent
+   colour — links are grey and underlined. */
+
+:root {
+  --paper:   #f5f4ef;
+  --ink:     #000000;
+  --muted:   #686868;
+  --link:    #595959;
+  --border:  #403e37;
+  --divider: #e5e4dc;
+  --fill:    #ebeae5;
+  color-scheme: light;
+}
+
+/* PI ships light only; this is the same system inverted. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:   #14140f;
+    --ink:     #f5f4ef;
+    --muted:   #918f86;
+    --link:    #a9a69b;
+    --border:  #6d6a5e;
+    --divider: #2c2b25;
+    --fill:    #1d1c17;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="light"] {
+  --paper:   #f5f4ef;
+  --ink:     #000000;
+  --muted:   #686868;
+  --link:    #595959;
+  --border:  #403e37;
+  --divider: #e5e4dc;
+  --fill:    #ebeae5;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --paper:   #14140f;
+  --ink:     #f5f4ef;
+  --muted:   #918f86;
+  --link:    #a9a69b;
+  --border:  #6d6a5e;
+  --divider: #2c2b25;
+  --fill:    #1d1c17;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  /* PI's exact stack — no webfont, nothing to load. */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.62;
+}
+
+/* Signifier is Klim's and licensed, so the wordmark and headings use whatever
+   good serif is already on the machine. */
+.serif {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Charter,
+    "Source Serif 4", Georgia, serif;
+  font-weight: 400;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--ink); }
+
+/* Keyboard users had no visible position: everything was :hover-only. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+}
+
+p { margin: 0; }
+
+.shell {
+  width: min(50rem, calc(100% - 3rem));
+  margin-left: clamp(1.5rem, 4vw, 3rem);
+  padding: 3rem 0 6rem;
+}
+
+/* ---------- header ---------- */
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 2.5rem;
+  margin-bottom: 2.75rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  margin-left: auto;
+}
+nav a, #theme {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1px;
+}
+nav a:hover, #theme:hover { border-bottom-color: var(--muted); color: var(--muted); }
+
+#theme {
+  background: none;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  padding: 0 0 1px;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ---------- intro ---------- */
+
+/* The plate. On PI the boxed entries pull the eye straight past the intro, so
+   the intro gets the strongest box on the page rather than none at all. */
+.plate {
+  padding: 1.1rem 1.2rem;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.intro {
+  margin-bottom: 3.5rem;
+  font-size: 0.875rem;
+}
+.intro p + p { margin-top: 0.85rem; }
+.intro a { color: var(--ink); }
+
+/* Plain text, not a mailto: — an address spelled out this way survives casual
+   harvesting while staying obvious to a person. */
+.profile-links .email { color: var(--muted); }
+
+.profile-links {
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  font-size: 0.8125rem;
+}
+
+/* ---------- portrait ---------- */
+
+/* Two separate objects side by side rather than a photo boxed inside the card:
+   the portrait gets its own plate treatment and the text plate stays text. */
+.intro-row {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 3.5rem;
+}
+.intro-row .intro { margin-bottom: 0; }
+
+.portrait { margin: 0; }
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Colour at rest — a hover-only reveal would leave phone and tablet visitors,
+     who never hover, with nothing but the lesser version. */
+  border: 1px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--signal);
+}
+
+/* Both cards answer together, from anywhere in the row, so the gesture doesn't
+   depend on finding the photo. */
+.intro-row .intro,
+.intro-row .portrait img {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.intro-row:hover .intro,
+.intro-row:hover .portrait img {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--signal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-row .intro,
+  .intro-row .portrait img { transition: none; }
+  /* keep the shadow cue, drop the movement */
+  .intro-row:hover .intro,
+  .intro-row:hover .portrait img { transform: none; }
+}
+
+/* ---------- page headings ---------- */
+
+h2 {
+  margin: 0 0 1.25rem;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+section + section { margin-top: 4.5rem; }
+
+/* ---------- the index ---------- */
+
+.index {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 2rem;
+  list-style: none;
+}
+
+/* the spine */
+.index::before {
+  content: "";
+  position: absolute;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  left: 3px;
+  width: 1px;
+  background: var(--border);
+}
+
+.item {
+  position: relative;
+  /* the same inline padding as a plate, so plated and unplated entries share one
+     left edge for text and one right edge for media */
+  padding: 0.85rem 1rem;
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  left: -2rem;
+  width: 7px;
+  height: 7px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+
+/* a flagged entry gets the plate — set "highlight": true in the JSON */
+.item.plate {
+  padding: 0.9rem 1rem;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.item.plate::before { top: 1.4rem; }
+
+/* Grid, not flex: paper titles are long, and wrapping must not drop the date
+   onto its own left-aligned line. */
+.item-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0 1.5rem;
+  align-items: baseline;
+}
+
+.item-title {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.item-title a { color: inherit; text-decoration: none; }
+.item-title a:hover { text-decoration: underline; }
+
+.item-date {
+  grid-column: 2;
+  grid-row: 1;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- affiliation marks ---------- */
+
+/* Under the date, so "when" and "where" read as one right-hand rail. */
+.item-orgs {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  margin: 0.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.3rem 0.4rem;
+}
+
+.org {
+  padding: 0 0.35rem;
+  border: 1px solid var(--divider);
+  color: var(--muted);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.org a { color: inherit; text-decoration: none; }
+.org:hover { border-color: var(--muted); }
+.org a:hover { color: var(--ink); background: none; }
+
+/* With a real mark the chip is just a frame — drop the border and let the logo
+   sit on the page. */
+.org.has-logo {
+  padding: 0;
+  border: 0;
+  color: var(--muted);
+}
+
+/* Each mark is fitted to a common box at build time, so the row is the same
+   height whatever it contains. Inline SVGs paint with currentColor directly;
+   rasters are painted as a mask to the same effect — so one colour rule drives
+   both. */
+.org-logo {
+  display: block;
+  width: var(--logo-w);
+  height: var(--logo-h);
+  color: inherit;
+}
+
+span.org-logo {
+  background: currentColor;
+  -webkit-mask: var(--logo) no-repeat center / contain;
+  mask: var(--logo) no-repeat center / contain;
+}
+
+/* every mark sits in the same band, centred, so marks of different heights
+   still produce identical row spacing */
+.org.has-logo a {
+  display: flex;
+  align-items: center;
+  height: var(--org-band, 1.4rem);
+  transition: color 140ms ease;
+}
+
+/* Hovering returns a mark to its own colour. Resting monochrome keeps the page
+   quiet; the brand only appears on intent. */
+.org.has-logo a:hover { color: var(--brand, var(--ink)); }
+@media (prefers-color-scheme: dark) {
+  .org.has-logo a:hover { color: var(--brand-dk, var(--brand, var(--ink))); }
+}
+:root[data-theme="light"] .org.has-logo a:hover { color: var(--brand, var(--ink)); }
+:root[data-theme="dark"] .org.has-logo a:hover {
+  color: var(--brand-dk, var(--brand, var(--ink)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .org.has-logo a { transition: none; }
+}
+
+.item-authors,
+.item-note {
+  margin-top: 0.2rem;
+  color: var(--muted);
+  max-width: 36rem;
+}
+
+/* a shorter measure than the title and links, so the citation reads as a
+   subordinate block instead of another full-width line */
+.item-authors { max-width: 24rem; }
+
+/* ---------- media ---------- */
+
+/* Inline, not stacked: the figure takes a column beside the text so an entry
+   stays one band tall instead of becoming a hero image. The text is wrapped so
+   the figure occupies a single grid row — spanning rows would stretch them and
+   open a gap between the title and the authors. */
+.item.has-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  column-gap: 1.5rem;
+  align-items: start;
+}
+
+.item-media { margin: 0.75rem 0 0; }
+.item.has-media .item-media { margin: 0; }
+.item-media a { display: block; }
+
+/* One ratio for every figure, so the column is flush whatever the source is.
+   contain rather than cover: the videos are all ~16:9, but AnyMug's still is 2:1
+   and cropping a multi-panel diagram would cut panels off. */
+.item-media img,
+.item-media video {
+  display: block;
+  width: 100%;
+  height: auto;          /* required — else the HTML height attribute wins */
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border: 1px solid var(--divider);
+  background: var(--fill);
+}
+.item-media a:hover img,
+.item-media a:hover video {
+  border-color: var(--ink);
+  box-shadow: 3px 3px 0 var(--signal);
+}
+
+.item-links {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.25rem;
+}
+
+/* ---------- code ---------- */
+
+.plain-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.plain-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--divider);
+}
+.plain-list li:first-child { border-top: 1px solid var(--divider); }
+
+/* ---------- news ---------- */
+
+/* A bulleted log, not cards: one dated line per item, links inline in the
+   sentence. Reads as a running feed and stays short as it grows. */
+.news-list {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  list-style: disc;
+}
+.news-list li {
+  margin-bottom: 0.55rem;
+  padding: 0;
+  border: 0;
+  max-width: 40rem;
+}
+.news-list li::marker { color: var(--divider); }
+.news-list li:last-child { margin-bottom: 0; }
+
+.news-date {
+  font-weight: 700;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- signal ----------
+   One colour, borrowed from PI's own infographic highlight token and given a
+   job they don't give it: the plate shadow, the beads, and a marker-pen link
+   hover. It is the only hue on the page. */
+
+:root { --signal: #fbd45b; }
+@media (prefers-color-scheme: dark) { :root { --signal: #f0c64a; } }
+/* explicit choice wins over the system in both directions */
+:root[data-theme="light"] { --signal: #fbd45b; }
+:root[data-theme="dark"]  { --signal: #f0c64a; }
+
+.plate { box-shadow: 4px 4px 0 var(--signal); }
+.item.plate { box-shadow: 3px 3px 0 var(--signal); }
+
+.item::before {
+  background: var(--signal);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.index::before { background: var(--divider); }
+
+a:hover {
+  background: var(--signal);
+  color: #151a19;
+  text-decoration-color: transparent;
+}
+nav a:hover, #theme:hover {
+  background: var(--signal);
+  color: #151a19;
+  border-bottom-color: var(--ink);
+}
+
+/* ---------- narrow ---------- */
+
+@media (max-width: 46rem) {
+  .item-head { grid-template-columns: minmax(0, 1fr); }
+  .item-title, .item-date, .item-orgs { grid-column: 1; grid-row: auto; }
+  .item-date { margin-top: 0.1rem; }
+  .item-orgs { justify-self: start; justify-content: flex-start; }
+
+  /* no room for a side column — the figure goes back under the text */
+  .item.has-media { display: block; }
+  .item.has-media .item-media { margin-top: 0.75rem; max-width: 22rem; }
+}
+
+@media (max-width: 40rem) {
+  /* stack: portrait above the text, at a size that still reads as a portrait */
+  .intro-row { grid-template-columns: minmax(0, 1fr); row-gap: 1.1rem; }
+  .portrait { max-width: 8rem; }
+
+  .shell {
+    width: calc(100% - 2.5rem);
+    margin-inline: auto;
+    padding-top: 2.25rem;
+  }
+  h2 { font-size: 2.25rem; }
+  nav { margin-left: 0; width: 100%; }
+  .index { padding-left: 1.4rem; }
+  .item::before { left: -1.4rem; }
+  .item.plate { padding-inline: 0.75rem; }
+}
+
+@media print {
+  .shell { width: auto; margin: 0; }
+  nav, #theme { display: none; }
+  .plate { box-shadow: none; }
+}
