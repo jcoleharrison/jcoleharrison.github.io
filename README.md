@@ -117,6 +117,26 @@ Deliberately **not** done, and why:
 - **The email is text, not a `mailto:`**, and is absent from the JSON-LD — that
   was the most harvestable copy on the page.
 
+## analytics
+
+Off by default — the page loads no third-party assets unless you turn it on.
+To enable GA4, add the Measurement ID to `content/site.json`:
+
+```json
+"analytics": { "ga4": "G-XXXXXXXXXX" }
+```
+
+Rebuild and push; the gtag snippet is emitted only when that key exists, so
+removing it removes the script entirely.
+
+Two things to weigh before enabling. GA4 sets cookies and processes personal
+data, so EU/UK visitors legally require consent — meaning a cookie banner, on a
+page whose whole argument is restraint. And it is the only third-party request
+the site would make. A cookieless alternative (Cloudflare Web Analytics is free,
+GoatCounter is free and open source, Plausible is paid) needs no banner and
+answers the same question for a personal site: how many people came, and from
+where.
+
 ## performance
 
 - Videos carry `preload="none"` and start via IntersectionObserver. `autoplay`

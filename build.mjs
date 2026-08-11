@@ -357,7 +357,20 @@ const html = `<!doctype html>
         : ""
     }
     <link rel="stylesheet" href="styles.css?v=${cssHash}" />
-    <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
+    <script type="application/ld+json">${JSON.stringify(jsonld)}</script>${
+      site.analytics?.ga4
+        ? `
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${esc(
+      site.analytics.ga4
+    )}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "${esc(site.analytics.ga4)}");
+    </script>`
+        : ""
+    }
     <script>
       // Applied before first paint so a stored choice never flashes the other theme.
       try {
