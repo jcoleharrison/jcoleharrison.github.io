@@ -84,5 +84,8 @@
   },
   "email": "j.cole.harrison [at] me [dot] com",
   "twitter": "@cole__ai",
-  "role": "Machine Learning Research Engineer"
+  "role": "Machine Learning Research Engineer",
+  "verification": {
+    "google": "H2uiNXGGBy_9YN0-AHgNKFq92Swc4u7r0vJTmTn1nMk"
+  }
 }
