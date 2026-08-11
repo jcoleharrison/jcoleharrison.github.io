@@ -18,7 +18,7 @@
         "url": "https://github.com/qq456cvb/UniPose9D"
       }
     ],
-    "highlight": true,
+    "highlight": false,
     "media": {
       "type": "image",
       "src": "media/unipose9d.webp",

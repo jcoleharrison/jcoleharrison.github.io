@@ -267,6 +267,12 @@ section + section { margin-top: 4.5rem; }
 }
 .item.plate::before { top: 1.4rem; }
 
+/* Two plates in a row would otherwise stack their borders into a 2px seam, and
+   the lower one's opaque background would paint over the upper one's offset
+   shadow — merging them into a single tall box. A gap keeps each a distinct
+   object with its own shadow. */
+.item.plate + .item.plate { margin-top: 0.85rem; }
+
 /* Grid, not flex: paper titles are long, and wrapping must not drop the date
    onto its own left-aligned line. */
 .item-head {
