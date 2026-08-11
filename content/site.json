@@ -9,25 +9,29 @@
     "height": 500
   },
   "bio": [
-    "I am a Machine Learning Research Engineer at Amazon Web Services and Embodied AI lead at Cohere Labs, as well as a research collaborator with the Stanford Geometric Computation Group and PRIOR at Ai2.",
+    "I am a Machine Learning Research Engineer at Amazon Web Services and Embodied AI lead at Cohere Labs, and collaborate with researchers in the Stanford Geometric Computation Group and PRIOR at Ai2.",
     "My research interests are in reinforcement learning, computer vision, and multimodal foundation models, and range from algorithmic foundations to large-scale training and deployment."
   ],
   "affiliations": [
     {
       "label": "Amazon Web Services",
-      "url": "https://aws.amazon.com/"
+      "url": "https://aws.amazon.com/",
+      "affiliation": true
     },
     {
       "label": "Stanford Geometric Computation Group",
-      "url": "https://geometry.stanford.edu/"
+      "url": "https://geometry.stanford.edu/",
+      "affiliation": false
     },
     {
       "label": "PRIOR at Ai2",
-      "url": "https://prior.allenai.org/"
+      "url": "https://prior.allenai.org/",
+      "affiliation": false
     },
     {
       "label": "Cohere Labs",
-      "url": "https://cohere.com/research/open-science"
+      "url": "https://cohere.com/research/open-science",
+      "affiliation": true
     }
   ],
   "links": [

@@ -264,11 +264,11 @@ const jsonld = {
       description: site.description,
       url: site.url,
       knowsAbout: site.interests,
-      affiliation: site.affiliations.map((a) => ({
-        "@type": "Organization",
-        name: a.label,
-        url: a.url,
-      })),
+      // Only real employers. Collaborating with people at a lab is not an
+      // organizational affiliation, and schema.org reads it as one.
+      affiliation: site.affiliations
+        .filter((a) => a.affiliation)
+        .map((a) => ({ "@type": "Organization", name: a.label, url: a.url })),
       sameAs: live(site.links)
         .filter((l) => l.url.startsWith("http"))
         .map((l) => l.url),
