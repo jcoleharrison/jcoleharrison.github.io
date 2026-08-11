@@ -41,6 +41,10 @@ const bust = (path) => {
 
 const cssHash = hash(readFileSync(join(root, "src", "styles.css")));
 
+// Google shows ~60 characters. The role earns the page results beyond the
+// exact-name query, which a bare name cannot.
+const pageTitle = site.role ? `${site.name} — ${site.role}` : site.name;
+
 const MONTHS =
   "January February March April May June July August September October November December".split(" ");
 const longDate = (iso) => {
@@ -263,10 +267,15 @@ const jsonld = {
       name: site.name,
       description: site.description,
       url: site.url,
+      ...(site.role ? { jobTitle: site.role } : {}),
+      ...(site.portrait?.src ? { image: `${site.url}/${site.portrait.src}` } : {}),
       knowsAbout: site.interests,
       // Only real employers. Collaborating with people at a lab is not an
       // organizational affiliation, and schema.org reads it as one.
       affiliation: site.affiliations
+        .filter((a) => a.affiliation)
+        .map((a) => ({ "@type": "Organization", name: a.label, url: a.url })),
+      worksFor: site.affiliations
         .filter((a) => a.affiliation)
         .map((a) => ({ "@type": "Organization", name: a.label, url: a.url })),
       sameAs: live(site.links)
@@ -302,12 +311,12 @@ const html = `<!doctype html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${esc(site.name)}</title>
+    <title>${esc(pageTitle)}</title>
     <meta name="description" content="${esc(site.description)}" />
     <meta name="author" content="${esc(site.name)}" />
     <link rel="canonical" href="${esc(site.url)}/" />
     <meta property="og:type" content="profile" />
-    <meta property="og:title" content="${esc(site.name)}" />
+    <meta property="og:title" content="${esc(pageTitle)}" />
     <meta property="og:description" content="${esc(site.description)}" />
     <meta property="og:url" content="${esc(site.url)}/" />
     <meta property="og:site_name" content="${esc(site.name)}" />
@@ -325,7 +334,7 @@ const html = `<!doctype html>
         : ""
     }
     <meta name="twitter:card" content="${ogImage ? "summary_large_image" : "summary"}" />
-    <meta name="twitter:title" content="${esc(site.name)}" />
+    <meta name="twitter:title" content="${esc(pageTitle)}" />
     <meta name="twitter:description" content="${esc(site.description)}" />${
       ogImage
         ? `

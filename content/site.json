@@ -1,7 +1,7 @@
 {
   "name": "Cole Harrison",
   "url": "https://jcoleharrison.github.io",
-  "description": "Cole Harrison is a machine learning research engineer working on reinforcement learning, computer vision, and multimodal foundation models, applied to robot learning and sim-to-real learning.",
+  "description": "Cole Harrison is a machine learning research engineer at AWS working on reinforcement learning, computer vision, and multimodal foundation models.",
   "portrait": {
     "src": "media/cole.webp",
     "alt": "Cole Harrison",
@@ -83,5 +83,6 @@
     }
   },
   "email": "j.cole.harrison [at] me [dot] com",
-  "twitter": "@cole__ai"
+  "twitter": "@cole__ai",
+  "role": "Machine Learning Research Engineer"
 }
