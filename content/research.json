@@ -58,7 +58,7 @@
   },
   {
     "id": "molmoact2",
-    "title": "MolmoAct 2: Action Reasoning Models for Real-world Deployment",
+    "title": "MolmoAct2: Action Reasoning Models for Real-world Deployment",
     "authors": "Haoquan Fang, Jiafei Duan, … Cole Harrison, … Ali Farhadi, Dieter Fox, Ranjay Krishna (29 authors)",
     "date": "2026-05-05",
     "links": [
@@ -79,7 +79,7 @@
         "url": "https://github.com/allenai/molmoact2"
       }
     ],
-    "highlight": false,
+    "highlight": true,
     "media": {
       "type": "video",
       "src": "media/molmoact2.mp4",

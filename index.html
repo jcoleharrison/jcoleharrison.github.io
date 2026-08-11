@@ -29,8 +29,8 @@
     <link rel="apple-touch-icon" href="media/icons/icon-180.png" />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#f5f4ef" />
-    <link rel="stylesheet" href="styles.css?v=96993595" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://jcoleharrison.github.io/#me","name":"Cole Harrison","description":"Cole Harrison is a machine learning research engineer working on reinforcement learning, computer vision, and multimodal foundation models, applied to robot learning and sim-to-real learning.","url":"https://jcoleharrison.github.io","knowsAbout":["Reinforcement learning","Computer vision","Multimodal foundation models","Robot learning","Sim-to-real transfer"],"affiliation":[{"@type":"Organization","name":"Amazon Web Services","url":"https://aws.amazon.com/"},{"@type":"Organization","name":"Stanford Geometric Computation Group","url":"https://geometry.stanford.edu/"},{"@type":"Organization","name":"PRIOR at Ai2","url":"https://prior.allenai.org/"},{"@type":"Organization","name":"Cohere Labs","url":"https://cohere.com/research/open-science"}],"sameAs":["https://scholar.google.com/citations?user=9W_lY40AAAAJ&hl=en&oi=ao","https://github.com/jcoleharrison","https://x.com/cole__ai","https://www.linkedin.com/in/cole-harrison-ai"]},{"@type":"ScholarlyArticle","headline":"UniPose9D: Universal Category-Agnostic Object Pose Estimation","datePublished":"2026-07-10","url":"https://qq456cvb.github.io/projects/unipose9d","author":{"@id":"https://jcoleharrison.github.io/#me"}},{"@type":"ScholarlyArticle","headline":"Pose-Agnostic Robotic Functional Grasping via Observation-Action Canonicalization","datePublished":"2026-06-19","url":"https://arxiv.org/abs/2606.21148","author":{"@id":"https://jcoleharrison.github.io/#me"}},{"@type":"ScholarlyArticle","headline":"MolmoAct 2: Action Reasoning Models for Real-world Deployment","datePublished":"2026-05-05","url":"https://allenai.org/blog/molmoact2","author":{"@id":"https://jcoleharrison.github.io/#me"}},{"@type":"ScholarlyArticle","headline":"TOPReward: Token Probabilities as Hidden Zero-Shot Rewards for Robotics","datePublished":"2026-02-22","url":"https://topreward.github.io/webpage/","author":{"@id":"https://jcoleharrison.github.io/#me"}}]}</script>
+    <link rel="stylesheet" href="styles.css?v=1e851e6c" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://jcoleharrison.github.io/#me","name":"Cole Harrison","description":"Cole Harrison is a machine learning research engineer working on reinforcement learning, computer vision, and multimodal foundation models, applied to robot learning and sim-to-real learning.","url":"https://jcoleharrison.github.io","knowsAbout":["Reinforcement learning","Computer vision","Multimodal foundation models","Robot learning","Sim-to-real transfer"],"affiliation":[{"@type":"Organization","name":"Amazon Web Services","url":"https://aws.amazon.com/"},{"@type":"Organization","name":"Stanford Geometric Computation Group","url":"https://geometry.stanford.edu/"},{"@type":"Organization","name":"PRIOR at Ai2","url":"https://prior.allenai.org/"},{"@type":"Organization","name":"Cohere Labs","url":"https://cohere.com/research/open-science"}],"sameAs":["https://scholar.google.com/citations?user=9W_lY40AAAAJ&hl=en&oi=ao","https://github.com/jcoleharrison","https://x.com/cole__ai","https://www.linkedin.com/in/cole-harrison-ai"]},{"@type":"ScholarlyArticle","headline":"UniPose9D: Universal Category-Agnostic Object Pose Estimation","datePublished":"2026-07-10","url":"https://qq456cvb.github.io/projects/unipose9d","author":{"@id":"https://jcoleharrison.github.io/#me"}},{"@type":"ScholarlyArticle","headline":"Pose-Agnostic Robotic Functional Grasping via Observation-Action Canonicalization","datePublished":"2026-06-19","url":"https://arxiv.org/abs/2606.21148","author":{"@id":"https://jcoleharrison.github.io/#me"}},{"@type":"ScholarlyArticle","headline":"MolmoAct2: Action Reasoning Models for Real-world Deployment","datePublished":"2026-05-05","url":"https://allenai.org/blog/molmoact2","author":{"@id":"https://jcoleharrison.github.io/#me"}},{"@type":"ScholarlyArticle","headline":"TOPReward: Token Probabilities as Hidden Zero-Shot Rewards for Robotics","datePublished":"2026-02-22","url":"https://topreward.github.io/webpage/","author":{"@id":"https://jcoleharrison.github.io/#me"}}]}</script>
     <script>
       // Applied before first paint so a stored choice never flashes the other theme.
       try {
@@ -55,7 +55,10 @@
           <a href="#papers">Papers</a>
           <a href="#news">News</a>
           <a href="#code">Code</a>
-          <button id="theme" type="button">Dark</button>
+          <button id="theme" type="button" aria-label="Switch to dark theme">
+            <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.4 8.4 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z" /></svg>
+            <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1" /><path d="M12 2.6v2.1M12 19.3v2.1M4.6 4.6l1.5 1.5M17.9 17.9l1.5 1.5M2.6 12h2.1M19.3 12h2.1M4.6 19.4l1.5-1.5M17.9 6.1l1.5-1.5" /></svg>
+          </button>
         </nav>
       </header>
 
@@ -98,10 +101,10 @@
             </div>
             <figure class="item-media"><a href="https://arxiv.org/abs/2606.21148" tabindex="-1"><video src="media/anymug.mp4?v=6af5a700" poster="media/anymug.jpg?v=98c0451b" width="640" height="360" loop muted playsinline preload="none" aria-label="Zero-shot functional grasping on a Franka Panda"></video></a></figure>
           </li>
-          <li class="item has-media">
+          <li class="item plate has-media">
             <div class="item-body">
               <div class="item-head">
-                <h3 class="item-title"><a href="https://allenai.org/blog/molmoact2">MolmoAct 2: Action Reasoning Models for Real-world Deployment</a></h3>
+                <h3 class="item-title"><a href="https://allenai.org/blog/molmoact2">MolmoAct2: Action Reasoning Models for Real-world Deployment</a></h3>
                 <p class="item-date"><time datetime="2026-05-05">May 5, 2026</time></p>
                 <ul class="item-orgs" style="--org-band:2.263rem"><li class="org has-logo" style="--brand:#ff59aa;--brand-dk:#ff59aa"><a href="https://prior.allenai.org/"><span class="org-logo" style="--logo:url('media/logos/ai2.png?v=87b4825c');--logo-w:3.200rem;--logo-h:1.045rem" role="img" aria-label="Ai2 PRIOR"></span></a></li></ul>
               </div>
@@ -208,15 +211,12 @@
       (function () {
         var root = document.documentElement;
         var btn = document.getElementById("theme");
-        var system = matchMedia("(prefers-color-scheme: dark)");
-
         function current() {
-          return root.dataset.theme || (system.matches ? "dark" : "light");
+          return root.dataset.theme === "dark" ? "dark" : "light";
         }
         function label() {
-          var next = current() === "dark" ? "Light" : "Dark";
-          btn.textContent = next;
-          btn.setAttribute("aria-label", "Switch to " + next.toLowerCase() + " theme");
+          var next = current() === "dark" ? "light" : "dark";
+          btn.setAttribute("aria-label", "Switch to " + next + " theme");
         }
 
         btn.addEventListener("click", function () {
@@ -225,11 +225,6 @@
             localStorage.setItem("theme", root.dataset.theme);
           } catch (e) {}
           label();
-        });
-
-        // Track the system setting until the visitor overrides it.
-        system.addEventListener("change", function () {
-          if (!root.dataset.theme) label();
         });
 
         label();

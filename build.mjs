@@ -366,7 +366,10 @@ const html = `<!doctype html>
           <a href="#papers">Papers</a>
           <a href="#news">News</a>
           <a href="#code">Code</a>
-          <button id="theme" type="button">Dark</button>
+          <button id="theme" type="button" aria-label="Switch to dark theme">
+            <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.4 8.4 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z" /></svg>
+            <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.1" /><path d="M12 2.6v2.1M12 19.3v2.1M4.6 4.6l1.5 1.5M17.9 17.9l1.5 1.5M2.6 12h2.1M19.3 12h2.1M4.6 19.4l1.5-1.5M17.9 6.1l1.5-1.5" /></svg>
+          </button>
         </nav>
       </header>
 
@@ -436,15 +439,12 @@ ${
       (function () {
         var root = document.documentElement;
         var btn = document.getElementById("theme");
-        var system = matchMedia("(prefers-color-scheme: dark)");
-
         function current() {
-          return root.dataset.theme || (system.matches ? "dark" : "light");
+          return root.dataset.theme === "dark" ? "dark" : "light";
         }
         function label() {
-          var next = current() === "dark" ? "Light" : "Dark";
-          btn.textContent = next;
-          btn.setAttribute("aria-label", "Switch to " + next.toLowerCase() + " theme");
+          var next = current() === "dark" ? "light" : "dark";
+          btn.setAttribute("aria-label", "Switch to " + next + " theme");
         }
 
         btn.addEventListener("click", function () {
@@ -453,11 +453,6 @@ ${
             localStorage.setItem("theme", root.dataset.theme);
           } catch (e) {}
           label();
-        });
-
-        // Track the system setting until the visitor overrides it.
-        system.addEventListener("change", function () {
-          if (!root.dataset.theme) label();
         });
 
         label();

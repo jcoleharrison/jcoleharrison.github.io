@@ -81,7 +81,7 @@ so its alpha was derived from colour and ramped to drop the checkerboard. Both
 rasters were then cropped to their content bounds and scaled to 96px tall —
 roughly 5x the display size, enough for retina without the weight.
 
-## seo and deployment
+## seo
 
 Generated on every build: `robots.txt`, `sitemap.xml` (with `lastmod`), `404.html`,
 `site.webmanifest`, and `.nojekyll` — the last is required, or GitHub Pages runs
@@ -129,12 +129,48 @@ Deliberately **not** done, and why:
 
 ## deploying
 
-Everything needed is at the root, so GitHub Pages can serve the branch directly
-with no Actions workflow.
+Live at **https://jcoleharrison.github.io/**, served by GitHub Pages from
+`main` at the repo root. There is no CI and no Actions workflow — Pages serves
+the committed files directly, which is why the built output is tracked rather
+than gitignored.
 
-**Set `url` in `content/site.json` to the real domain first.** It feeds the
-canonical tag, the Open Graph tags, the absolute `og:image` URL, the sitemap, and
-the JSON-LD `@id`. Getting it wrong points every one of those at the wrong host.
+The repo **must** stay named `jcoleharrison.github.io` (exactly the GitHub
+username) for the root URL. Any other name makes it a project page at
+`jcoleharrison.github.io/<repo>/`, which would also require changing `url` in
+`content/site.json`.
+
+### the loop
+
+```sh
+npm run build                    # regenerate index.html, styles.css, 404, sitemap, manifest
+git add -A && git commit -m "..."
+git push                         # Pages redeploys in ~1 min
+```
+
+`npm run build` is not optional — `index.html` is generated, so editing
+`content/*.json` without rebuilding pushes stale HTML. Never hand-edit
+`index.html`, `styles.css` (root), `404.html`, `robots.txt`, `sitemap.xml`, or
+`site.webmanifest`; they are all overwritten on every build.
+
+### checking a deploy
+
+```sh
+gh api repos/jcoleharrison/jcoleharrison.github.io/pages --jq .status   # building | built
+curl -sI https://jcoleharrison.github.io/ | head -1
+```
+
+Assets are content-hashed, so a redeploy invalidates caches on its own. The one
+exception is `index.html` itself, which Pages serves with a short TTL — a hard
+reload settles it.
+
+### if it needs to move
+
+- **Custom domain** — add a `CNAME` file containing the bare domain, point DNS
+  at the Pages IPs, and set `url` in `content/site.json` to match. That `url`
+  feeds the canonical tag, Open Graph, the absolute `og:image`, the sitemap, and
+  the JSON-LD `@id`, so it is the single thing to get right.
+- **The previous Jekyll site** is preserved, private, at
+  `jcoleharrison.github.io-archive`. It was never deployed.
 
 ## the reference
 
@@ -167,7 +203,8 @@ This site implements tiers 1 and 3, driven by `"highlight": true` in
 `content/research.json`. It is not an odd/even effect — set the flag on whatever
 you consider flagship.
 
-PI ships light only; dark here is the same system inverted.
+PI ships light only. Dark here is the same system inverted, offered as an
+opt-in rather than a default.
 
 The one departure from PI is colour: their highlight yellow is given a job they
 don't give it — the plate shadow, the beads, and a marker-pen link hover. It is
@@ -180,10 +217,13 @@ A name, two paragraphs, a list of papers. Mono throughout, serif for the
 wordmark and headings, one yellow doing all the emphasis.
 Modelled on how working researchers actually publish a homepage.
 
-Light and dark both ship. The page follows the visitor's system setting by
-default; the toggle beside the name overrides it and the choice is remembered in
-`localStorage`. A tiny script in `<head>` applies a stored choice before first
-paint so the other theme never flashes.
+Light and dark both ship, but the page is **light by default regardless of the
+visitor's system setting** — `prefers-color-scheme` is deliberately not consulted.
+Dark is reached only through the sun/moon toggle beside the nav, and the choice
+persists in `localStorage`. A tiny script in `<head>` applies a stored choice
+before first paint so the other theme never flashes. Both icons ship in the
+markup and CSS picks one from the root attribute, so the correct glyph paints
+without waiting on script.
 
 The stylesheet URL carries a hash of its own contents (`styles.css?v=…`),
 so a browser holding an old copy fetches the new one instead of rendering a
