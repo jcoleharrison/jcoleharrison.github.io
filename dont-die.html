@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A first-principles knowledge base grading Bryan Johnson's Don't Die / Blueprint protocol against the actual human evidence — what is established, promising, anecdotal, or already dropped.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Don't Die, Verified">
+<meta property="og:description" content="What the evidence actually supports in Bryan Johnson's Blueprint protocol.">
+<meta property="og:type" content="article">
+<link rel="icon" href="favicon.ico" sizes="any">
+<script>
+  // Apply a stored theme before first paint so neither theme flashes.
+  try { var t = localStorage.getItem('dd-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<title>Don't Die, Verified</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#f6f5ef; --surface:#fffdf7; --surface-2:#efece2; --sunk:#eae7db;
+    --ink:#17160f; --muted:#65635a; --faint:#8f8c7f;
+    --rule:#ddd9cc; --rule-strong:#46443a;
+    --accent:#9a6b1f; --accent-soft:#f0e6d0;
+    --est:#2f7a4a; --est-bg:#e7f0e7;
+    --prom:#a2751b; --prom-bg:#f3ebd6;
+    --anec:#6d6a5d; --anec-bg:#eae8df;
+    --ref:#b23a2b; --ref-bg:#f4e2dd;
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --measure:68ch;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#14140e; --surface:#1c1c14; --surface-2:#23221a; --sunk:#100f0a;
+      --ink:#ecebe0; --muted:#a5a294; --faint:#7b7969;
+      --rule:#302f25; --rule-strong:#5a5748;
+      --accent:#d3a24e; --accent-soft:#2a2417;
+      --est:#63b184; --est-bg:#182a1e;
+      --prom:#d1a24e; --prom-bg:#2b2415;
+      --anec:#a5a294; --anec-bg:#23221a;
+      --ref:#e2745f; --ref-bg:#2e1a15;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14140e; --surface:#1c1c14; --surface-2:#23221a; --sunk:#100f0a;
+    --ink:#ecebe0; --muted:#a5a294; --faint:#7b7969;
+    --rule:#302f25; --rule-strong:#5a5748;
+    --accent:#d3a24e; --accent-soft:#2a2417;
+    --est:#63b184; --est-bg:#182a1e;
+    --prom:#d1a24e; --prom-bg:#2b2415;
+    --anec:#a5a294; --anec-bg:#23221a;
+    --ref:#e2745f; --ref-bg:#2e1a15;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--serif); font-size:19px; line-height:1.62;
+    margin:0; -webkit-font-smoothing:antialiased; font-synthesis:none;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem)}
+  .layout{display:grid; grid-template-columns:1fr; gap:0}
+  @media (min-width:960px){
+    .layout{grid-template-columns:15.5rem minmax(0,1fr); gap:3.2rem; align-items:start}
+  }
+
+  /* ---- masthead ---- */
+  header.top{border-bottom:1px solid var(--rule-strong); padding:clamp(2.2rem,6vw,3.6rem) 0 1.6rem}
+  .eyebrow{font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin:0 0 1rem}
+  h1.title{font-family:var(--serif); font-weight:600; font-size:clamp(2.4rem,7vw,4.2rem); line-height:1.02; letter-spacing:-.015em; margin:0; text-wrap:balance}
+  h1.title em{font-style:italic; color:var(--muted); font-weight:400}
+  .standfirst{font-size:clamp(1.05rem,2.2vw,1.32rem); color:var(--muted); max-width:44ch; margin:1.2rem 0 0; line-height:1.5}
+  .metaline{font-family:var(--mono); font-size:.72rem; color:var(--faint); letter-spacing:.04em; margin-top:1.6rem; display:flex; flex-wrap:wrap; gap:.4rem 1.3rem}
+
+  /* ---- toc rail ---- */
+  nav.toc{padding:2rem 0}
+  @media (min-width:960px){nav.toc{position:sticky; top:0; max-height:100vh; overflow-y:auto; padding:2.6rem 0}}
+  nav.toc .lbl{font-family:var(--mono); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin:0 0 .9rem}
+  nav.toc ol{list-style:none; margin:0; padding:0; counter-reset:toc}
+  nav.toc li{counter-increment:toc; margin:0}
+  nav.toc a{display:block; font-family:var(--mono); font-size:.8rem; line-height:1.35; text-decoration:none; color:var(--muted); padding:.36rem 0; border-bottom:1px solid transparent}
+  nav.toc a::before{content:counter(toc,decimal-leading-zero); color:var(--faint); margin-right:.7em; font-size:.72rem}
+  nav.toc a:hover{color:var(--accent)}
+  .toc-tools{margin-top:1.6rem; display:flex; gap:.5rem; flex-wrap:wrap}
+
+  main{padding:1.5rem 0 5rem; min-width:0}
+  section{padding:2.6rem 0; border-top:1px solid var(--rule)}
+  section:first-of-type{border-top:none}
+  h2{font-family:var(--serif); font-weight:600; font-size:clamp(1.6rem,3.6vw,2.15rem); letter-spacing:-.01em; line-height:1.1; margin:0 0 .3rem; text-wrap:balance; scroll-margin-top:1rem}
+  h2 .num{font-family:var(--mono); font-size:.82rem; font-weight:500; color:var(--accent); letter-spacing:.1em; display:block; margin-bottom:.55rem}
+  h3{font-family:var(--serif); font-weight:600; font-size:1.24rem; margin:2rem 0 .5rem; letter-spacing:-.005em}
+  p{max-width:var(--measure); margin:0 0 1.05rem}
+  a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:.5px; text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+  a:hover{text-decoration-color:var(--accent)}
+  strong{font-weight:600}
+  em{font-style:italic}
+  .lead{font-size:1.14rem; color:var(--ink)}
+  .muted{color:var(--muted)}
+  ul.body,ol.body{max-width:var(--measure); padding-left:1.2rem; margin:0 0 1.1rem}
+  ul.body li,ol.body li{margin:0 0 .5rem}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+
+  /* ---- tier badges ---- */
+  .tier{display:inline-flex; align-items:center; gap:.4em; font-family:var(--mono); font-size:.64rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:.24em .55em; border-radius:3px; white-space:nowrap; line-height:1; vertical-align:middle}
+  .t-est{color:var(--est); background:var(--est-bg)}
+  .t-prom{color:var(--prom); background:var(--prom-bg)}
+  .t-anec{color:var(--anec); background:var(--anec-bg)}
+  .t-ref{color:var(--ref); background:var(--ref-bg)}
+  .dot{width:.5em; height:.5em; border-radius:50%; background:currentColor; flex:none}
+
+  /* ---- legend ---- */
+  .legend{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:.1rem 1.6rem; margin:1.4rem 0 0; max-width:var(--measure)}
+  .legend div{display:flex; gap:.7rem; align-items:baseline; padding:.5rem 0; border-bottom:1px solid var(--rule); font-size:.95rem}
+  .legend .tier{flex:none}
+
+  /* ---- metric tiles ---- */
+  .metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:6px; overflow:hidden; margin:1.5rem 0}
+  .metrics .m{background:var(--surface); padding:1rem 1.1rem}
+  .metrics .v{font-family:var(--mono); font-size:1.5rem; font-weight:500; letter-spacing:-.02em; font-variant-numeric:tabular-nums; line-height:1.05}
+  .metrics .k{font-family:var(--mono); font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:.5rem; line-height:1.3}
+
+  /* ---- callout ---- */
+  .callout{max-width:var(--measure); background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:1.1rem 1.3rem; margin:1.5rem 0}
+  .callout.warn{border-left-color:var(--ref)}
+  .callout .h{font-family:var(--mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 .5rem}
+  .callout.warn .h{color:var(--ref)}
+  .callout p{margin:0; font-size:1rem}
+  .callout p+p{margin-top:.7rem}
+
+  /* ---- ledger / table ---- */
+  .tablescroll{overflow-x:auto; margin:1.4rem 0; border:1px solid var(--rule); border-radius:6px}
+  table{border-collapse:collapse; width:100%; font-size:.92rem; min-width:34rem}
+  thead th{font-family:var(--mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:.7rem .9rem; background:var(--surface-2); border-bottom:1px solid var(--rule); position:sticky; top:0}
+  tbody td{padding:.8rem .9rem; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.45}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--surface-2) 40%,transparent)}
+  td .item{font-weight:600}
+  td.tiercell{white-space:nowrap}
+  td .ev{color:var(--muted); font-size:.88rem}
+
+  /* ---- ledger cards (verified conclusions) ---- */
+  .conclusions{counter-reset:conc; margin:1.5rem 0 0; max-width:var(--measure)}
+  .conc{display:grid; grid-template-columns:auto 1fr; gap:1rem 1.1rem; padding:1.15rem 0; border-top:1px solid var(--rule)}
+  .conc:first-child{border-top:none}
+  .conc .n{counter-increment:conc; font-family:var(--mono); font-size:.78rem; color:var(--faint); padding-top:.15rem; font-variant-numeric:tabular-nums}
+  .conc .n::before{content:counter(conc,decimal-leading-zero)}
+  .conc .body h4{font-family:var(--serif); font-weight:600; font-size:1.12rem; margin:0 0 .35rem; line-height:1.3}
+  .conc .body p{margin:.35rem 0 0; font-size:.98rem; color:var(--muted); max-width:60ch}
+  .conc .body .tier{margin-top:.55rem}
+
+  /* ---- key/value protocol list ---- */
+  dl.spec{max-width:var(--measure); margin:1.2rem 0; display:grid; grid-template-columns:1fr; gap:0}
+  dl.spec > div{display:grid; grid-template-columns:1fr; gap:.15rem; padding:.85rem 0; border-top:1px solid var(--rule)}
+  @media(min-width:640px){dl.spec > div{grid-template-columns:11rem 1fr; gap:1.2rem}}
+  dl.spec dt{font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); padding-top:.15rem}
+  dl.spec dd{margin:0; font-size:1rem}
+
+  /* ---- footnote refs ---- */
+  a.cite{font-family:var(--mono); font-size:.6rem; font-weight:500; text-decoration:none; color:var(--accent); vertical-align:super; padding:0 .1em; letter-spacing:0}
+  a.cite:hover{text-decoration:underline}
+
+  .refs{max-width:var(--measure)}
+  .refs ol{font-family:var(--mono); font-size:.78rem; line-height:1.5; padding-left:2.2rem; color:var(--muted)}
+  .refs li{margin:0 0 .55rem; padding-left:.3rem}
+  .refs a{word-break:break-word}
+
+  footer{border-top:1px solid var(--rule-strong); padding:2rem 0 3rem; font-family:var(--mono); font-size:.72rem; color:var(--faint); line-height:1.6}
+  footer p{max-width:none}
+
+  button.theme{font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:.4rem .7rem; cursor:pointer}
+  button.theme:hover{color:var(--accent); border-color:var(--accent)}
+  a.top-link{font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); text-decoration:none; border:1px solid var(--rule); border-radius:4px; padding:.4rem .7rem}
+  a.top-link:hover{color:var(--accent); border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Longevity · Knowledge Base · n&nbsp;=&nbsp;1</p>
+    <h1 class="title">Don't Die, <em>Verified</em></h1>
+    <p class="standfirst">A first-principles map of Bryan Johnson's Blueprint protocol &mdash; separating what the evidence actually supports from what is marketing, anecdote, or already abandoned.</p>
+    <div class="metaline">
+      <span>SUBJECT: Bryan Johnson / Project Blueprint</span>
+      <span>METHOD: claims graded against human evidence</span>
+      <span>REV: 2026-09</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Contents">
+      <p class="lbl">Contents</p>
+      <ol>
+        <li><a href="#tldr">The one-paragraph truth</a></li>
+        <li><a href="#who">Who is Bryan Johnson</a></li>
+        <li><a href="#philosophy">"Don't Die" as an idea</a></li>
+        <li><a href="#legend">How to read the grades</a></li>
+        <li><a href="#protocol">The protocol, by system</a></li>
+        <li><a href="#results">His reported results</a></li>
+        <li><a href="#ledger">Evidence ledger</a></li>
+        <li><a href="#dropped">What was tried and dropped</a></li>
+        <li><a href="#conflicts">Conflicts &amp; caveats</a></li>
+        <li><a href="#conclusions">Verified conclusions</a></li>
+        <li><a href="#diy">The free 90%</a></li>
+        <li><a href="#open">Open questions</a></li>
+        <li><a href="#refs">References</a></li>
+      </ol>
+      <div class="toc-tools">
+        <button class="theme" id="themebtn" type="button">Theme</button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- 1 -->
+      <section id="tldr">
+        <h2><span class="num">01 — Summary</span>The one-paragraph truth</h2>
+        <p class="lead">Blueprint is the most thoroughly documented self-experiment in the history of longevity &mdash; and its most defensible conclusions are unglamorous. After roughly $2M/year, 100+ daily pills, and a decade of exotic interventions, Bryan Johnson himself now points at <strong>sleep, whole-food nutrition, daily movement, avoiding harm, and relationships</strong> as the bulk of the value <a class="cite" href="#r-time">[1]</a>. Those levers have genuine human evidence behind them. The novel and expensive parts of the protocol have <strong>not</strong> been shown to extend human lifespan &mdash; and two of its most cinematic experiments (young-plasma exchange and rapamycin) were <strong>quietly abandoned as ineffective or harmful</strong> <a class="cite" href="#r-rapa">[9]</a><a class="cite" href="#r-plasma">[10]</a>. Blueprint is an <em>n&nbsp;=&nbsp;1 case study</em>, not a clinical trial. It is best read as a rigorous demonstration that the basics, done with obsessive consistency, produce excellent biomarkers &mdash; not as proof that any pill, drip, or drug buys extra years.</p>
+
+        <div class="callout">
+          <p class="h">The core claim, graded</p>
+          <p><span class="tier t-est"><span class="dot"></span>Established</span> &nbsp;the basics work &nbsp;·&nbsp; <span class="tier t-prom"><span class="dot"></span>Promising</span> &nbsp;most supplements &amp; clocks &nbsp;·&nbsp; <span class="tier t-anec"><span class="dot"></span>Anecdotal</span> &nbsp;his personal numbers &nbsp;·&nbsp; <span class="tier t-ref"><span class="dot"></span>Dropped</span> &nbsp;the sci-fi interventions</p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section id="who">
+        <h2><span class="num">02 — Background</span>Who is Bryan Johnson</h2>
+        <p>Born 1977 in Utah, raised Mormon (later left the church). He founded the payments company <strong>Braintree</strong> in 2007; Braintree acquired <strong>Venmo</strong> in 2012, and <strong>PayPal bought Braintree in 2013 for ~$800M</strong>, netting Johnson an estimated ~$300M <a class="cite" href="#r-wiki">[2]</a>. He later founded <strong>OS Fund</strong> (deep-tech investing) and <strong>Kernel</strong> (brain-computer interfaces).</p>
+        <p>Around 2020&ndash;2021, after a period of depression, weight gain, and burnout, he launched <strong>Project Blueprint</strong>: an attempt to run his body like a data-driven system, spending a reported <strong>~$2M/year</strong> and tracking <strong>100+ biomarkers</strong> with a team of physicians. The 2025 Netflix documentary <em>Don't Die: The Man Who Wants to Live Forever</em> (dir. Chris Smith) brought it to a mass audience <a class="cite" href="#r-netflix">[3]</a>. He now also sells Blueprint-branded supplements and foods &mdash; a fact that matters when weighing his claims (see §09).</p>
+      </section>
+
+      <!-- 3 -->
+      <section id="philosophy">
+        <h2><span class="num">03 — Idea</span>"Don't Die" as an idea</h2>
+        <p>"Don't Die" is the philosophy wrapped around the protocol. Its moves, stated plainly:</p>
+        <ul class="body">
+          <li><strong>Not dying is the goal, and the prerequisite for every other goal.</strong> Johnson frames longevity as the "zeroth principle" &mdash; you can't pursue anything if you're dead &mdash; and pitches it as a secular, quasi-religious ethic and a community/movement, not just a routine.</li>
+          <li><strong>"Demote the conscious mind."</strong> His central psychological claim is that the deliberate, willpower-driven mind is a poor manager of long-term health (it rationalizes the late-night snack). So he hands decisions to a measured <em>algorithm</em> &mdash; data and pre-commitment decide, not in-the-moment desire <a class="cite" href="#r-netflix">[3]</a>.</li>
+          <li><strong>Measurement over opinion.</strong> Every intervention is supposed to earn its place by moving a biomarker. In practice this ideal is compromised by n&nbsp;=&nbsp;1 sampling and conflicts of interest (§09), but the <em>principle</em> &mdash; act on data, not vibes &mdash; is sound.</li>
+        </ul>
+        <p class="muted">Note the epistemic status: the <em>philosophy</em> is a set of values and framing devices. It is neither true nor false in the scientific sense &mdash; it's a motivational operating system. Judge it on whether it produces adherence (it clearly does for him), not on whether it's "proven."</p>
+      </section>
+
+      <!-- 4 -->
+      <section id="legend">
+        <h2><span class="num">04 — Method</span>How to read the grades</h2>
+        <p>Every factual claim in this document carries one of four grades. The grade describes <em>the strength of human evidence for the claim as stated</em> &mdash; not whether Johnson believes it.</p>
+        <div class="legend">
+          <div><span class="tier t-est"><span class="dot"></span>Established</span><span>Robust human evidence and broad scientific consensus. Safe to act on.</span></div>
+          <div><span class="tier t-prom"><span class="dot"></span>Promising</span><span>Plausible mechanism + some human data, but <em>not</em> proven to extend lifespan/healthspan.</span></div>
+          <div><span class="tier t-anec"><span class="dot"></span>Anecdotal</span><span>A single-person self-report (n&nbsp;=&nbsp;1). Real measurement, zero generalizability.</span></div>
+          <div><span class="tier t-ref"><span class="dot"></span>Dropped / Refuted</span><span>Abandoned by Johnson, or contradicted by better evidence.</span></div>
+        </div>
+        <div class="callout warn">
+          <p class="h">The one caveat that governs everything</p>
+          <p><strong>No intervention &mdash; not one &mdash; has ever been shown to extend maximum human lifespan.</strong> Every longevity claim below is really a claim about <em>risk factors, biomarkers, or animal models</em> standing in for lifespan, because a direct human lifespan trial is infeasible. Keep that substitution in mind whenever you read "anti-aging."</p>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section id="protocol">
+        <h2><span class="num">05 — System</span>The protocol, by system</h2>
+        <p>Blueprint is best understood as five stacked layers. The layers are ordered here by how much evidence supports them &mdash; which is roughly the <em>opposite</em> of how much attention they get.</p>
+
+        <h3>Sleep &mdash; the top lever <span class="tier t-est"><span class="dot"></span>Established</span></h3>
+        <p>Johnson calls sleep "the most powerful drug in the world" and treats bedtime as the most important appointment of the day. His high-value habits are nearly all free: a <strong>fixed bedtime (±30 min every day)</strong>, a 30&ndash;60 min wind-down with no screens, a <strong>cool, dark, quiet room</strong>, morning light, an <strong>early caffeine cutoff</strong>, and a last meal hours before bed. He estimates ~80% of his sleep gains came from these free habits, not gadgets <a class="cite" href="#r-sleep">[4]</a>.</p>
+
+        <h3>Nutrition &mdash; plant-forward, calorie-aware, early <span class="tier t-est"><span class="dot"></span>Established</span> <span class="tier t-prom"><span class="dot"></span>Promising</span></h3>
+        <p>A largely vegan, whole-food diet of ~2,000&ndash;2,250 kcal/day, eaten in a compressed morning window (all food finished by ~11am&ndash;noon &mdash; an early time-restricted-eating pattern). No alcohol, minimal added sugar, capped caffeine. The two fixed daily meals are public:</p>
+        <dl class="spec">
+          <div><dt>Super Veggie</dt><dd>Black lentils, broccoli, cauliflower, shiitake/maitake mushrooms, garlic, ginger, cumin, hemp seeds, extra-virgin olive oil <a class="cite" href="#r-meals">[5]</a>.</dd></div>
+          <div><dt>Nutty Pudding</dt><dd>Macadamia &amp; walnuts, chia, cocoa, berries, pomegranate juice, sometimes pea protein <a class="cite" href="#r-meals">[5]</a>.</dd></div>
+          <div><dt>Third meal</dt><dd>Varies day to day; same plant-forward template.</dd></div>
+        </dl>
+        <p>The whole-food, plant-forward pattern and the avoidance of alcohol/junk are <span class="tier t-est"><span class="dot"></span>Established</span> goods. Caloric restriction and time-restricted eating are <span class="tier t-prom"><span class="dot"></span>Promising</span>: the CALERIE RCT showed ~25% calorie reduction improves cardiometabolic markers and modestly slows the pace of aging over 2 years, but human lifespan benefit remains unproven <a class="cite" href="#r-calerie">[6]</a>.</p>
+
+        <h3>Exercise &mdash; ~1 hr/day <span class="tier t-est"><span class="dot"></span>Established</span></h3>
+        <p>Roughly 6 hours/week blending <strong>resistance training, zone-2 cardio, high-intensity intervals (4×4), plus flexibility and balance</strong>, with movement breaks through the day. This is squarely evidence-based: both aerobic fitness (VO₂ max) and strength/lean mass are among the strongest predictors of all-cause mortality we have. Johnson notes even 20 min/day delivers most of the benefit <a class="cite" href="#r-time">[1]</a>.</p>
+
+        <h3>Supplements &amp; medications &mdash; ~100 pills/day <span class="tier t-prom"><span class="dot"></span>Promising</span></h3>
+        <p>The stack has changed repeatedly (he has been <em>reducing</em> it under a "do less" principle). Recurring core items: vitamin D, omega-3 (EPA/DHA), B12/B-complex, <strong>creatine</strong>, magnesium, zinc, CoQ10/ubiquinol, NAC, garlic extract, curcumin, taurine, glucosamine, plus a "Longevity Mix" drink. Grades vary by ingredient &mdash; see the ledger (§07). The honest summary: a few have solid human data (creatine, omega-3, correcting a vitamin-D deficiency); most rest on mechanism and biomarker studies; none is proven to extend human life.</p>
+
+        <h3>Measurement &amp; advanced therapies <span class="tier t-prom"><span class="dot"></span>Promising</span> <span class="tier t-anec"><span class="dot"></span>Anecdotal</span></h3>
+        <p><strong>Measurement:</strong> monthly blood panels, DEXA, MRI, ultrasound, colonoscopy, VO₂-max testing, continuous glucose monitoring, WHOOP, and quarterly epigenetic clocks &mdash; 100+ markers, some resolved to organ-specific "ages." Rigorous quantified-self, genuinely useful for catching problems early.</p>
+        <p><strong>Therapies</strong> layered on top include red/near-infrared light and hyperbaric oxygen (HBOT). These have some supportive data for narrow endpoints (skin, wound healing, inflammation markers) but weak evidence for slowing aging. The more experimental additions &mdash; and the ones that failed &mdash; are covered in §08.</p>
+      </section>
+
+      <!-- 6 -->
+      <section id="results">
+        <h2><span class="num">06 — Data</span>His reported results</h2>
+        <p>These are Johnson's own published measurements. They appear to be real readings on validated assays &mdash; and they are simultaneously <span class="tier t-anec"><span class="dot"></span>Anecdotal</span>: one person, often one testing vendor, no control group, self-published rather than peer-reviewed.</p>
+        <div class="metrics" role="list" aria-label="Reported biomarkers">
+          <div class="m" role="listitem"><div class="v">0.50–0.69</div><div class="k">DunedinPACE (pace of aging; &lt;1 = slower)</div></div>
+          <div class="m" role="listitem"><div class="v">~58–64</div><div class="k">VO₂ max mL·kg⁻¹·min⁻¹ (top ~1–2%)</div></div>
+          <div class="m" role="listitem"><div class="v">0.15</div><div class="k">hsCRP mg/L (very low inflammation)</div></div>
+          <div class="m" role="listitem"><div class="v">~5.1 yr</div><div class="k">claimed epigenetic-age reversal</div></div>
+          <div class="m" role="listitem"><div class="v">~100+</div><div class="k">biomarkers tracked</div></div>
+          <div class="m" role="listitem"><div class="v">~$2M</div><div class="k">annual spend</div></div>
+        </div>
+        <p>He also ranks #1 on the <strong>Rejuvenation Olympics</strong> DunedinPACE leaderboard <a class="cite" href="#r-rejuv">[7]</a>. Two things are true at once: (a) these are excellent, genuinely elite numbers, especially the VO₂ max and inflammation markers, which reflect real training and diet; and (b) the leap from "my epigenetic clock reads low" to "I have reduced my pace of aging by decades" is <strong>not supported</strong> &mdash; a longevity researcher publicly showed the widely-repeated "31 years younger" framing is unsubstantiated <a class="cite" href="#r-31yr">[8]</a>.</p>
+      </section>
+
+      <!-- 7 -->
+      <section id="ledger">
+        <h2><span class="num">07 — Ledger</span>Evidence ledger, intervention by intervention</h2>
+        <p>The heart of the knowledge base: what the best available human evidence says about each component, graded independently of Johnson's enthusiasm.</p>
+        <div class="tablescroll">
+          <table>
+            <thead>
+              <tr><th scope="col">Intervention</th><th scope="col">Best human evidence</th><th scope="col">Grade</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="item">Sleep regularity</span></td><td class="ev">Sleep duration &amp; consistency strongly linked to mortality, metabolic and cognitive health. Highest ROI, lowest cost.</td><td class="tiercell"><span class="tier t-est"><span class="dot"></span>Established</span></td></tr>
+              <tr><td><span class="item">Aerobic exercise (VO₂ max)</span></td><td class="ev">Cardiorespiratory fitness is one of the strongest known predictors of all-cause mortality.</td><td class="tiercell"><span class="tier t-est"><span class="dot"></span>Established</span></td></tr>
+              <tr><td><span class="item">Resistance training</span></td><td class="ev">Strength &amp; muscle mass independently predict survival; protective against age-related decline.</td><td class="tiercell"><span class="tier t-est"><span class="dot"></span>Established</span></td></tr>
+              <tr><td><span class="item">Whole-food, plant-forward diet</span></td><td class="ev">Consistent association with lower cardiovascular/all-cause mortality across large cohorts.</td><td class="tiercell"><span class="tier t-est"><span class="dot"></span>Established</span></td></tr>
+              <tr><td><span class="item">Avoiding smoking / excess alcohol</span></td><td class="ev">Among the largest modifiable mortality effects known. "Don't add harm" beats most supplements.</td><td class="tiercell"><span class="tier t-est"><span class="dot"></span>Established</span></td></tr>
+              <tr><td><span class="item">Social connection</span></td><td class="ev">Strong relationships associate with longer life at effect sizes rivaling major lifestyle factors.</td><td class="tiercell"><span class="tier t-est"><span class="dot"></span>Established</span></td></tr>
+              <tr><td><span class="item">Creatine</span></td><td class="ev">Well-studied; reliably supports strength/lean mass with resistance training. Not proven for lifespan.</td><td class="tiercell"><span class="tier t-est"><span class="dot"></span>Established</span></td></tr>
+              <tr><td><span class="item">Omega-3 (EPA/DHA)</span></td><td class="ev">DO-HEALTH RCT: 1 g/day slowed 3 methylation clocks by ~3&ndash;4 months over 3 yrs; additive with vit-D + exercise. Small effect.</td><td class="tiercell"><span class="tier t-prom"><span class="dot"></span>Promising</span></td></tr>
+              <tr><td><span class="item">Vitamin D (if deficient)</span></td><td class="ev">Correcting deficiency is worthwhile; DO-HEALTH shows modest biological-age signal. Benefit in the already-replete is unclear.</td><td class="tiercell"><span class="tier t-prom"><span class="dot"></span>Promising</span></td></tr>
+              <tr><td><span class="item">Caloric restriction / TRE</span></td><td class="ev">CALERIE RCT: improves cardiometabolic risk &amp; modestly slows DunedinPACE. Human lifespan benefit unproven.</td><td class="tiercell"><span class="tier t-prom"><span class="dot"></span>Promising</span></td></tr>
+              <tr><td><span class="item">Collagen peptides</span></td><td class="ev">Some trials show skin improvement; a "biological age" reduction claim exists but evidence is thin/observational.</td><td class="tiercell"><span class="tier t-prom"><span class="dot"></span>Promising</span></td></tr>
+              <tr><td><span class="item">NMN / NR (NAD⁺ precursors)</span></td><td class="ev">Raise blood NAD⁺ and shift some metabolic markers; no hard-outcome or lifespan evidence in humans.</td><td class="tiercell"><span class="tier t-prom"><span class="dot"></span>Promising</span></td></tr>
+              <tr><td><span class="item">Epigenetic clocks (DunedinPACE etc.)</span></td><td class="ev">Validated <em>correlates</em> of mortality/aging pace. That <em>lowering</em> the clock adds years is a hypothesis, not established causation.</td><td class="tiercell"><span class="tier t-prom"><span class="dot"></span>Promising</span></td></tr>
+              <tr><td><span class="item">HBOT / red-light therapy</span></td><td class="ev">Narrow endpoints (wound healing, skin, some inflammation markers) have support; "anti-aging" use is speculative.</td><td class="tiercell"><span class="tier t-prom"><span class="dot"></span>Promising</span></td></tr>
+              <tr><td><span class="item">Resveratrol</span></td><td class="ev">NIH Interventions Testing Program found <em>no</em> lifespan extension in mice; human case is far weaker than marketing implies.</td><td class="tiercell"><span class="tier t-ref"><span class="dot"></span>Refuted</span></td></tr>
+              <tr><td><span class="item">Rapamycin</span></td><td class="ev">Dropped after ~5 yrs for side effects (infections, lipid/glucose, resting HR); a preprint linked it to <em>accelerated</em> epigenetic aging in humans.</td><td class="tiercell"><span class="tier t-ref"><span class="dot"></span>Dropped</span></td></tr>
+              <tr><td><span class="item">Young-plasma exchange</span></td><td class="ev">Father→Bryan→son transfusions showed no measurable benefit; abandoned.</td><td class="tiercell"><span class="tier t-ref"><span class="dot"></span>Dropped</span></td></tr>
+              <tr><td><span class="item">Growth hormone</span></td><td class="ev">~100-day trial stopped due to side effects (raised intracranial pressure, elevated glucose).</td><td class="tiercell"><span class="tier t-ref"><span class="dot"></span>Dropped</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section id="dropped">
+        <h2><span class="num">08 — Negative results</span>What was tried and dropped</h2>
+        <p>This is arguably the most valuable output of Blueprint, because negative results rarely get published in the wellness world. The pattern is stark: <strong>the most futuristic interventions are the ones that failed.</strong></p>
+        <ul class="body">
+          <li><strong>Rapamycin</strong> <span class="tier t-ref"><span class="dot"></span>Dropped</span> &mdash; a leading "longevity drug" candidate. After roughly five years, Johnson stopped, citing recurrent skin/soft-tissue infections, lipid and glucose abnormalities, and elevated resting heart rate; a preprint then reported rapamycin was associated with <em>accelerated</em> aging across epigenetic clocks in humans <a class="cite" href="#r-rapa">[9]</a>.</li>
+          <li><strong>Young-plasma exchange</strong> <span class="tier t-ref"><span class="dot"></span>Dropped</span> &mdash; the headline experiment from the documentary (Bryan received his father's plasma; his son gave to Bryan). He reported no measurable benefit and abandoned it, later acknowledging any apparent effect on his father may have been from removing "old" plasma, not the transfer itself <a class="cite" href="#r-plasma">[10]</a>.</li>
+          <li><strong>Growth hormone</strong> <span class="tier t-ref"><span class="dot"></span>Dropped</span> &mdash; stopped after ~100 days over side effects including raised intracranial pressure and elevated blood glucose.</li>
+          <li><strong>Follistatin gene therapy</strong> <span class="tier t-anec"><span class="dot"></span>Anecdotal</span> &mdash; an experimental, unregulated gene therapy taken abroad, with self-reported gains. Highly speculative; not validated.</li>
+        </ul>
+        <div class="callout">
+          <p class="h">The lesson</p>
+          <p>When a well-funded, closely-measured person runs the sci-fi interventions on himself and drops them, that <em>is</em> a result. It tells you the exotic longevity market is running well ahead of its evidence &mdash; and that the durable wins came from the boring layers.</p>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section id="conflicts">
+        <h2><span class="num">09 — Caveats</span>Conflicts &amp; things to keep in mind</h2>
+        <ul class="body">
+          <li><strong>It's a case study, not a trial.</strong> n&nbsp;=&nbsp;1, no control, self-published. You cannot separate the effect of any single intervention from the ~100 others, from his wealth, or from regression to the mean after an unhealthy baseline.</li>
+          <li><strong>He sells what he studies.</strong> Blueprint markets supplements, foods, olive oil, and protein powder derived from the protocol &mdash; a direct commercial incentive attached to the health claims <a class="cite" href="#r-wiki">[2]</a>.</li>
+          <li><strong>Product-quality flags.</strong> Independent, community-funded third-party testing and California Prop 65 notices reported detectable <strong>lead, cadmium, and/or arsenic</strong> in several Blueprint products, despite purity marketing (olive oil was a notable exception) <a class="cite" href="#r-metals">[11]</a>. "Third-party tested" is a claim to verify, not to trust by default.</li>
+          <li><strong>Scoring conflict.</strong> The Rejuvenation Olympics leaderboard he tops is run with TruDiagnostic, the company selling the epigenetic tests &mdash; the referee and the vendor overlap <a class="cite" href="#r-rejuv">[7]</a>.</li>
+          <li><strong>Non-science controversies.</strong> There have been public disputes with former employees/associates (e.g. allegations by ex-fiancée and former employee Taryn Southern regarding an NDA and employment). These are <em>allegations</em> and are separate from the science, but they bear on how much benefit of the doubt his self-reported data earns.</li>
+        </ul>
+      </section>
+
+      <!-- 10 -->
+      <section id="conclusions">
+        <h2><span class="num">10 — Payoff</span>The verified truthful conclusions</h2>
+        <p>Distilled. Each is stated at the strength the evidence actually supports.</p>
+        <div class="conclusions">
+          <div class="conc"><div class="n"></div><div class="body"><h4>The basics dominate the outcome.</h4><p>Sleep, exercise, whole-food nutrition, not smoking, limiting alcohol, and social connection carry the overwhelming majority of achievable health/longevity benefit. Johnson's own conclusion converges here.<span class="tier t-est"><span class="dot"></span>Established</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>Consistency beats intensity.</h4><p>The mechanism behind his results isn't any single hack; it's near-perfect adherence to ordinary habits. Systematizing and pre-committing (his "demote the mind") is a legitimate behavior-change tool.<span class="tier t-est"><span class="dot"></span>Established</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>Measurement is useful — for catching problems, not for proving reversal.</h4><p>Regular labs and imaging genuinely help detect disease early. But a moving biomarker is not the same as a longer life.<span class="tier t-est"><span class="dot"></span>Established</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>A few supplements clear the bar; most don't.</h4><p>Creatine (with training), omega-3, and correcting a vitamin-D deficiency have real human support. The other ~90 pills rest on mechanism and biomarkers, not outcomes.<span class="tier t-prom"><span class="dot"></span>Promising</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>Caloric restriction / early time-restricted eating is plausible but unproven for lifespan.</h4><p>CALERIE shows cardiometabolic benefit and a modest slowing of the aging pace; the jump to "more years" is not established in humans.<span class="tier t-prom"><span class="dot"></span>Promising</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>Epigenetic clocks measure a correlation, not a lever you've proven to pull.</h4><p>DunedinPACE and similar clocks predict mortality risk. That deliberately lowering your score buys real time is a reasonable hypothesis under active study — treat it as such.<span class="tier t-prom"><span class="dot"></span>Promising</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>His personal numbers are real but non-transferable.</h4><p>Elite VO₂ max, very low hsCRP, low DunedinPACE — genuine and impressive, and an n&nbsp;=&nbsp;1 result you can't assume applies to you or was caused by the exotic parts.<span class="tier t-anec"><span class="dot"></span>Anecdotal</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>The futuristic interventions underdelivered.</h4><p>Rapamycin (dropped, possibly harmful), young-plasma exchange (no benefit), and growth hormone (side effects) were all abandoned. The sci-fi layer is where the evidence is thinnest.<span class="tier t-ref"><span class="dot"></span>Dropped</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>Nothing here has been shown to extend human lifespan.</h4><p>True of Blueprint and true of the entire field. Every "anti-aging" result is a proxy — risk factors, biomarkers, or animal data — standing in for lifespan.<span class="tier t-est"><span class="dot"></span>Established</span></p></div></div>
+          <div class="conc"><div class="n"></div><div class="body"><h4>Read the claims through the conflicts.</h4><p>He sells the products, co-runs the scoreboard, and some products flagged for heavy metals. None of that makes the biology wrong — it means independent verification, not trust, is the right default.<span class="tier t-ref"><span class="dot"></span>Caveat</span></p></div></div>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section id="diy">
+        <h2><span class="num">11 — Practice</span>The free 90%</h2>
+        <p>If you want the evidence-backed core of Blueprint at ~0% of the cost, this is it &mdash; and it's essentially what Johnson himself now recommends first <a class="cite" href="#r-time">[1]</a>:</p>
+        <ul class="body">
+          <li><strong>Sleep:</strong> same bedtime daily (±30 min), cool dark room, screens off and caffeine cut early, wind-down ritual.</li>
+          <li><strong>Move:</strong> aim for ~150+ min/week aerobic + 2&ndash;3 strength sessions; even 20 min/day helps. Build VO₂ max and keep muscle.</li>
+          <li><strong>Eat:</strong> mostly whole plants, adequate protein, minimal ultra-processed food and added sugar; don't overeat; consider an earlier eating window.</li>
+          <li><strong>Don't add harm:</strong> no smoking/vaping, little to no alcohol, less doomscrolling.</li>
+          <li><strong>Connect:</strong> invest in relationships and community &mdash; a real longevity variable, not a soft one.</li>
+          <li><strong>Basics-first supplements (optional):</strong> creatine, omega-3, and vitamin D <em>if</em> a test shows you're low. Skip the exotic stack until the basics are locked in.</li>
+          <li><strong>Measure lightly:</strong> a periodic blood panel and knowing your key numbers beats an expensive gadget you ignore.</li>
+        </ul>
+      </section>
+
+      <!-- 12 -->
+      <section id="open">
+        <h2><span class="num">12 — Frontier</span>Open questions worth watching</h2>
+        <ul class="body">
+          <li>Does lowering an epigenetic clock <em>causally</em> extend healthy life, or only track it? (The field's central open question.)</li>
+          <li>Will any drug candidate (e.g. from the CR/mTOR/senolytic families) show a hard human outcome in a controlled trial?</li>
+          <li>How much of Blueprint's biomarker success is the protocol vs. simply going from an unhealthy baseline to disciplined basics?</li>
+          <li>Can rigorous n&nbsp;=&nbsp;1 self-experimentation, aggregated across many people (the "Olympics" model), ever substitute for RCTs? Probably not for causation &mdash; but it may generate hypotheses.</li>
+        </ul>
+      </section>
+
+      <!-- refs -->
+      <section id="refs" class="refs">
+        <h2><span class="num">13 — Sources</span>References</h2>
+        <p class="muted">Primary and reputable secondary sources used to grade the claims above. Where a source is promotional (e.g. Blueprint's own site), it is used only for describing the protocol, never for grading efficacy.</p>
+        <ol>
+          <li id="r-time">Bryan Johnson's highest-ROI advice is free (sleep/diet/movement). <a href="https://time.com/collections/future-of-living/7341335/bryan-johnson-longevity/">TIME</a>.</li>
+          <li id="r-wiki">Background, Braintree/Venmo/PayPal, Blueprint, product sales. <a href="https://en.wikipedia.org/wiki/Bryan_Johnson">Wikipedia: Bryan Johnson</a>.</li>
+          <li id="r-netflix"><em>Don't Die: The Man Who Wants to Live Forever</em> (2025), dir. Chris Smith. <a href="https://www.netflix.com/title/81757532">Netflix</a>; <a href="https://variety.com/2025/biz/news/dont-die-netflix-documentary-bryan-johnson-anti-aging-1236262153/">Variety</a>.</li>
+          <li id="r-sleep">Sleep protocol; ~80% of gains from free habits. <a href="https://blueprint.bryanjohnson.com/blogs/news/100-sleep-score">Blueprint</a>; <a href="https://www.mensfitness.com/news/bryan-johnson-3-hacks-for-a-perfect-night-of-sleep">Men's Fitness</a>.</li>
+          <li id="r-meals">Super Veggie &amp; Nutty Pudding recipes and daily meal structure. <a href="https://blueprint.bryanjohnson.com/blogs/news/bryan-johnsons-nutty-pudding-recipe">Blueprint</a>.</li>
+          <li id="r-calerie">CALERIE RCT: ~25% calorie restriction, cardiometabolic benefit &amp; slowed pace of aging. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5315691/">Calorie restriction in humans: an update (PMC)</a>.</li>
+          <li id="r-rejuv">Rejuvenation Olympics / DunedinPACE leaderboard, run with TruDiagnostic. <a href="https://www.rejuvenationolympics.com/">rejuvenationolympics.com</a>; critique: <a href="https://novoslabs.com/blog/longevity/the-reality-behind-bryan-johnsons-rejuvenation-olympics-and-why-novos-is-sharing-its-own-biological-aging-results/">NOVOS</a>.</li>
+          <li id="r-31yr">"31 years younger" pace claim is unsubstantiated. <a href="https://www.nmn.com/news/longevity-expert-explains-how-bryan-johnson-has-not-reduced-his-pace-of-aging-by-31-years">Longevity expert analysis</a>.</li>
+          <li id="r-rapa">Rapamycin discontinued; side effects; preprint linked it to accelerated epigenetic aging. <a href="https://blueprint.bryanjohnson.com/blogs/news/i-stopped-taking-rapamycin">Blueprint: I stopped taking rapamycin</a>; <a href="https://interestingengineering.com/culture/bryan-johnson-halts-anti-aging-drug">Interesting Engineering</a>.</li>
+          <li id="r-plasma">Young-plasma exchange abandoned; no measurable benefit. <a href="https://www.acsh.org/news/2025/02/10/longevity-or-marketing-dissecting-claims-blueprint-protocol-49290">ACSH: Longevity or Marketing?</a></li>
+          <li id="r-metals">Heavy-metal testing/Prop 65 notices on Blueprint products. <a href="https://oag.ca.gov/prop65/60-day-notice-2025-00544">CA OAG Prop 65 notice</a>; independent testing: <a href="https://tamararubin.com/2025/05/bryan-johnson-blueprint-longevity-mix">Tamara Rubin</a>.</li>
+          <li id="r-dohealth">DO-HEALTH RCT: omega-3 (+ vit D + exercise) slows methylation clocks. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11922767/">PMC</a>.</li>
+          <li id="r-itp">NIH Interventions Testing Program: no lifespan extension from resveratrol. <a href="https://www.longevityhub.net/p/the-3-supplements-with-genuine-clinical">Longevity Hub summary</a>.</li>
+        </ol>
+      </section>
+
+      <footer>
+        <p>Knowledge base compiled Sept 2026 from public sources. Grades reflect the strength of human evidence for each claim as stated, not endorsement. This is an educational reference, <strong>not medical advice</strong> &mdash; talk to a clinician before changing medications, supplements, or diet. Bryan Johnson's reported results are self-published n&nbsp;=&nbsp;1 measurements.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themebtn');
+    function stored(){try{return localStorage.getItem('dd-theme')}catch(e){return null}}
+    var s=stored(); if(s) root.setAttribute('data-theme',s);
+    function cur(){ if(root.getAttribute('data-theme')) return root.getAttribute('data-theme'); return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'; }
+    btn.addEventListener('click',function(){
+      var next=cur()==='dark'?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{localStorage.setItem('dd-theme',next)}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
